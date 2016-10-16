@@ -8,9 +8,10 @@ namespace AspNetExam.Controllers
 {
     public class HomeController : Controller
     {
-        public string Index()
+        public IActionResult Index(int num)
         {
-            return "Hello ASP.NET MVC!";
+            this.ViewData["result"] = num + 1;
+            return this.View();
         }
     }
 }

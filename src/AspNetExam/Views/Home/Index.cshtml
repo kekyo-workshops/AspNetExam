@@ -1,4 +1,5 @@
-﻿<html>
+﻿@using AspNetExam.Models
+<html>
 <head>
     <title>Hello ASP.NET MVC!</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -6,8 +7,8 @@
 <body>
     Random values:
     <ol class="list-group">
-        @foreach (var value in (int[])ViewData["results"]){
-        <li class="list-group-item">@value</li>
+        @foreach (var record in (x_ken_all[])ViewData["results"]){
+        <li class="list-group-item">@record.NewZipCode - @record.Prefecture@record.CityWard@record.Address</li>
         }
     </ol>
     <script src="~/lib/jquery/dist/jquery.js"></script>

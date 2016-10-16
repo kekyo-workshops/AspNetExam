@@ -2,19 +2,38 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetExam.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetExam.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index(int count)
+        private readonly IHostingEnvironment _hosting;
+
+        public HomeController(IHostingEnvironment hosting)
         {
-            var r = new Random();
-            this.ViewData["results"] =
-                Enumerable.Range(0, count).
-                Select(index => r.Next()).
-                ToArray();
+            _hosting = hosting;
+        }
+
+        public IActionResult Index(int zipCode)
+        {
+            // 7桁文字列に変換
+            var zipCodeString = String.Format("{0:D7}", zipCode);
+
+            using (var context = new x_ken_all_context(_hosting.WebRootPath))
+            {
+                // 郵便番号が一致するレコードを抽出
+                var q =
+                    from record in context.x_ken_alls
+                    where record.NewZipCode == zipCodeString
+                    select record;
+
+                // （固定化）
+                this.ViewData["results"] = q.ToArray();
+            }
+
             return this.View();
         }
     }

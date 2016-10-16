@@ -1,11 +1,16 @@
 ﻿<html>
-<head><title>Hello ASP.NET MVC!</title></head>
+<head>
+    <title>Hello ASP.NET MVC!</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
 <body>
-Random values:
-<ol>
-    @foreach (var value in (int[])ViewData["results"]){
-    <li>@value</li>
-    }
-</ol>
+    Random values:
+    <ol class="list-group">
+        @foreach (var value in (int[])ViewData["results"]){
+        <li class="list-group-item">@value</li>
+        }
+    </ol>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 </body>
 </html>

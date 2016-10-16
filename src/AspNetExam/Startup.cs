@@ -30,6 +30,9 @@ namespace AspNetExam
                 app.UseDeveloperExceptionPage();
             }
 
+            // Setup static file responder.
+            app.UseStaticFiles();
+
             // Setup MVC framework and router.
             app.UseMvc(routes =>
                 routes.MapRoute(

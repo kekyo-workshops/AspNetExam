@@ -8,9 +8,13 @@ namespace AspNetExam.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index(int num)
+        public IActionResult Index(int count)
         {
-            this.ViewData["result"] = num + 1;
+            var r = new Random();
+            this.ViewData["results"] =
+                Enumerable.Range(0, count).
+                Select(index => r.Next()).
+                ToArray();
             return this.View();
         }
     }

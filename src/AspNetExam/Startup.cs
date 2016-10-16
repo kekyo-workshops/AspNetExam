@@ -34,7 +34,7 @@ namespace AspNetExam
             app.UseMvc(routes =>
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{num?}"));
+                    template: "{controller=Home}/{action=Index}/{count?}"));
 
             //app.Run(async (context) =>
             //{

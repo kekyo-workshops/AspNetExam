@@ -19,21 +19,13 @@ namespace AspNetExam.Controllers
 
         public IActionResult Index(int zipCode)
         {
-            // 7桁文字列に変換
-            var zipCodeString = string.Format("{0:D7}", zipCode);
+            // 郵便番号辞書から検索する
+            var records =
+                x_ken_all_accessor.FetchByNewZipCode(_hosting.WebRootPath, zipCode);
 
-            using (var context = new x_ken_all_context(_hosting.WebRootPath))
-            {
-                // 郵便番号が一致するレコードを抽出
-                var q =
-                    from record in context.x_ken_alls
-                    where record.NewZipCode == zipCodeString
-                    select record;
-
-                // （固定化）
-                return this.View(new IndexResults
-                { Title = "ASP.NET MVC Results", Records = q.ToArray() });
-            }
+            // 結果をビューに転送
+            return this.View(new IndexResults
+            { Title = "ASP.NET MVC Results", Records = records });
         }
     }
 }

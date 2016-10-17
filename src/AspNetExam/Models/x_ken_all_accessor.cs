@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace AspNetExam.Models
 {
     public static class x_ken_all_accessor
     {
-        public static x_ken_all[] FetchByNewZipCode(string path, int zipCode)
+        public static async Task<x_ken_all[]>
+            FetchByNewZipCodeAsync(string path, int zipCode)
         {
             // 7桁文字列に変換
             var zipCodeString = string.Format("{0:D7}", zipCode);
@@ -21,7 +23,7 @@ namespace AspNetExam.Models
                     select record;
 
                 // （固定化）
-                return q.ToArray();
+                return await q.ToArrayAsync();
             }
         }
     }

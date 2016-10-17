@@ -17,11 +17,11 @@ namespace AspNetExam.Controllers
             _hosting = hosting;
         }
 
-        public IActionResult Index(int zipCode)
+        public async Task<IActionResult> Index(int zipCode)
         {
             // 郵便番号辞書から検索する
-            var records =
-                x_ken_all_accessor.FetchByNewZipCode(_hosting.WebRootPath, zipCode);
+            var records = await x_ken_all_accessor.FetchByNewZipCodeAsync(
+                _hosting.WebRootPath, zipCode);
 
             // 結果をビューに転送
             return this.View(new IndexResults

@@ -1,13 +1,13 @@
-﻿@model AspNetExam.Models.x_ken_all[]
+﻿@model AspNetExam.Models.IndexResults
 <html>
 <head>
-    <title>Hello ASP.NET MVC!</title>
+    <title>@Model.Title</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
 </head>
 <body>
     Address results:
     <ol class="list-group">
-        @foreach (var record in Model){
+        @foreach (var record in Model.Records){
         <li class="list-group-item">@record.NewZipCode - @record.Prefecture@record.CityWard@record.Address</li>
         }
     </ol>

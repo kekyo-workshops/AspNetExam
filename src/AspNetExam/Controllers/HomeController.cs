@@ -31,7 +31,8 @@ namespace AspNetExam.Controllers
                     select record;
 
                 // （固定化）
-                return this.View(q.ToArray());
+                return this.View(new IndexResults
+                { Title = "ASP.NET MVC Results", Records = q.ToArray() });
             }
         }
     }

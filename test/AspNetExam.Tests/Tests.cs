@@ -42,9 +42,8 @@ namespace AspNetExam.Tests
             Assert.AreEqual(
                 "7911101 - 愛媛県松山市久米窪田町",
                 document.
-                    Element("html").
-                    Element("body").
-                    Element("ol").
+                    Descendants().
+                    First(element => (string)element.Attribute("id") == "results").
                     Element("li").Value);
         }
     }

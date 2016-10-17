@@ -13,8 +13,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNetExam", "src\AspNetExam\AspNetExam.xproj", "{159847C0-E7F0-41CF-BC7A-2AA13D66B1A6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9F87D545-669D-46C6-B76E-D9BAA7E1FFCC} = {9F87D545-669D-46C6-B76E-D9BAA7E1FFCC}
+	EndProjectSection
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNetExam.Core", "src\AspNetExam.Core\AspNetExam.Core.xproj", "{9F87D545-669D-46C6-B76E-D9BAA7E1FFCC}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNetExam.Tests", "test\AspNetExam.Tests\AspNetExam.Tests.xproj", "{A98C9B0C-57BF-4936-9E3D-D01DD15F5177}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{1BEDE3C9-7B67-46B2-BF83-3BAC5B34F156}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +37,10 @@ Global
 		{9F87D545-669D-46C6-B76E-D9BAA7E1FFCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F87D545-669D-46C6-B76E-D9BAA7E1FFCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F87D545-669D-46C6-B76E-D9BAA7E1FFCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A98C9B0C-57BF-4936-9E3D-D01DD15F5177}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A98C9B0C-57BF-4936-9E3D-D01DD15F5177}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A98C9B0C-57BF-4936-9E3D-D01DD15F5177}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A98C9B0C-57BF-4936-9E3D-D01DD15F5177}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,5 +48,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{159847C0-E7F0-41CF-BC7A-2AA13D66B1A6} = {E3D1A1D9-F516-4A2A-B3B5-9A15A33C46D9}
 		{9F87D545-669D-46C6-B76E-D9BAA7E1FFCC} = {E3D1A1D9-F516-4A2A-B3B5-9A15A33C46D9}
+		{A98C9B0C-57BF-4936-9E3D-D01DD15F5177} = {1BEDE3C9-7B67-46B2-BF83-3BAC5B34F156}
 	EndGlobalSection
 EndGlobal

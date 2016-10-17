@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using CenterCLR.Sgml;
 using NUnit.Framework;
+using System.Xml.XPath;
 
 namespace AspNetExam.Tests
 {
@@ -42,9 +43,8 @@ namespace AspNetExam.Tests
             Assert.AreEqual(
                 "7911101 - 愛媛県松山市久米窪田町",
                 document.
-                    Descendants().
-                    First(element => (string)element.Attribute("id") == "results").
-                    Element("li").Value);
+                    XPathSelectElement("//*[@id='results']/li").
+                    Value);
         }
     }
 }

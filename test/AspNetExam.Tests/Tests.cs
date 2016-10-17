@@ -40,7 +40,7 @@ namespace AspNetExam.Tests
                     Element("head").
                     Element("title").Value);
             Assert.AreEqual(
-                "",
+                "7911101 - 愛媛県松山市久米窪田町",
                 document.
                     Element("html").
                     Element("body").

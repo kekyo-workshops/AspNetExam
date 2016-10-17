@@ -20,7 +20,7 @@ namespace AspNetExam.Controllers
         public IActionResult Index(int zipCode)
         {
             // 7桁文字列に変換
-            var zipCodeString = String.Format("{0:D7}", zipCode);
+            var zipCodeString = string.Format("{0:D7}", zipCode);
 
             using (var context = new x_ken_all_context(_hosting.WebRootPath))
             {
@@ -31,10 +31,8 @@ namespace AspNetExam.Controllers
                     select record;
 
                 // （固定化）
-                this.ViewData["results"] = q.ToArray();
+                return this.View(q.ToArray());
             }
-
-            return this.View();
         }
     }
 }

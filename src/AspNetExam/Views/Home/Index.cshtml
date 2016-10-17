@@ -1,13 +1,13 @@
-﻿@using AspNetExam.Models
+﻿@model AspNetExam.Models.x_ken_all[]
 <html>
 <head>
     <title>Hello ASP.NET MVC!</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
 </head>
 <body>
-    Random values:
+    Address results:
     <ol class="list-group">
-        @foreach (var record in (x_ken_all[])ViewData["results"]){
+        @foreach (var record in Model){
         <li class="list-group-item">@record.NewZipCode - @record.Prefecture@record.CityWard@record.Address</li>
         }
     </ol>

@@ -1,17 +1,40 @@
-﻿@model AspNetExam.Models.IndexResults
-<html>
+﻿<html>
 <head>
-    <title>@Model.Title</title>
+    <title>Hello ASP.NET MVC and WebAPI!</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
 </head>
 <body>
-    Address results:
-    <ol id="results" class="list-group">
-        @foreach (var record in Model.Records){
-        <li class="list-group-item">@record.NewZipCode - @record.Prefecture@record.CityWard@record.Address</li>
-        }
-    </ol>
+    <p>Enter zip code:<input id="zipCode" type="text"/>
+        <button onclick="invokeGetByZipCode()">Search...</button></p>
+    <p>Address results:
+        <ol id="resultList" class="list-group" /></p>
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        function invokeGetByZipCode() {
+            // 入力された郵便番号を取得
+            var zipCode = $("#zipCode").val();
+            // WebAPIの呼び出し
+            $.ajax("/Home/GetByZipCode/" + zipCode).
+                // 応答を受信
+                then(function (x_ken_alls) {
+                    // resultListの中身を全て削除
+                    var resultList = $("#resultList");
+                    resultList.empty();
+                    // 受信要素を追加
+                    $.each(x_ken_alls, function (index) {
+                        var x_ken_all = x_ken_alls[index];
+                        resultList.append(
+                            "<li class=\"list-group-item\">" +
+                            x_ken_all.newZipCode +
+                            " - " +
+                            x_ken_all.prefecture +
+                            x_ken_all.cityWard +
+                            x_ken_all.address +
+                            "</li>");
+                    });
+                });
+        }
+    </script>
 </body>
 </html>

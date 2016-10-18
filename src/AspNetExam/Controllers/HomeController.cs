@@ -27,5 +27,13 @@ namespace AspNetExam.Controllers
             return this.View(new IndexResults
             { Title = "ASP.NET MVC Results", Records = records });
         }
+
+        public async Task<x_ken_all[]> GetByZipCode(int zipCode)
+        {
+            // 郵便番号辞書から検索する
+            var records = await x_ken_all_accessor.FetchByNewZipCodeAsync(
+                _hosting.WebRootPath, zipCode);
+            return records;
+        }
     }
 }

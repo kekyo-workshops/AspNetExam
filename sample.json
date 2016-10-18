@@ -1,0 +1,19 @@
+[
+    {
+        "jisX0401": "38201",
+        "oldZipCode": "79111",
+        "newZipCode": "7911101",
+        "prefectureKana": "エヒメケン",
+        "cityWardKana": "マツヤマシ",
+        "addressKana": "クメクボタマチ",
+        "prefecture": "愛媛県",
+        "cityWard": "松山市",
+        "address": "久米窪田町",
+        "dup1": "0",
+        "withNumber": "0",
+        "streetNumber": "0",
+        "dup2": "0",
+        "changed": "0",
+        "detail": "0"
+    }
+]

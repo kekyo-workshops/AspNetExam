@@ -14,9 +14,16 @@
     <script src="http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.0.min.js"></script>
     <script src="/signalr/hubs"></script>
     <script type="text/javascript">
+        // サーバー参照を得る
+        var hub = $.connection.ken_all_hub;
+        $.connection.hub.start(function () {
+            // 初期化が完了してからボタンを有効化する
+            $("#signalRButton").removeAttr("disabled")
+        });
+    </script>
+    <script type="text/javascript">
         ////////////////////////////////
         // WebAPI
-
         function invokeWebAPI() {
             // 入力された郵便番号を取得
             var zipCode = $("#zipCode").val();
@@ -44,14 +51,6 @@
 
         ////////////////////////////////
         // SignalR
-
-        // サーバー参照を得る
-        var hub = $.connection.ken_all_hub;
-        $.connection.hub.start(function () {
-            // 初期化が完了してからボタンを有効化する
-            $("#signalRButton").removeAttr("disabled")
-        });
-
         function invokeSignalR() {
             // 入力された郵便番号を取得
             var zipCode = $("#zipCode").val();

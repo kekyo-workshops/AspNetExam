@@ -18,6 +18,9 @@ namespace AspNetExam
         {
             // Add MVC support.
             services.AddMvc();
+
+            // Add SignalR support.
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +38,12 @@ namespace AspNetExam
 
             // Setup static file responder.
             app.UseStaticFiles();
+
+            // Setup WebSockets.
+            app.UseWebSockets();
+
+            // Setup SignalR.
+            app.UseSignalR();
 
             // Setup MVC framework and router.
             app.UseMvc(routes =>

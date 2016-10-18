@@ -10,7 +10,9 @@
     "Microsoft.Extensions.Logging.Console": "1.0.0",
     "Microsoft.AspNetCore.Mvc": "1.0.1",
     "Microsoft.AspNetCore.StaticFiles": "1.0.0",
-    "Microsoft.EntityFrameworkCore.Sqlite": "1.0.1"
+    "Microsoft.EntityFrameworkCore.Sqlite": "1.0.1",
+    "Microsoft.AspNetCore.SignalR.Server": "0.2.0-preview1-22458",
+    "Microsoft.AspNetCore.WebSockets": "0.2.0-preview1-22458"
   },
 
   "tools": {

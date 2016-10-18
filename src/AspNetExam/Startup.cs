@@ -30,6 +30,9 @@ namespace AspNetExam
                 app.UseDeveloperExceptionPage();
             }
 
+            // Setup standard default files.
+            app.UseDefaultFiles();
+
             // Setup static file responder.
             app.UseStaticFiles();
 

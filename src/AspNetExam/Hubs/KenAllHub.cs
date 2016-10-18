@@ -19,11 +19,11 @@ namespace AspNetExam.Hubs
             _hosting = hosting;
         }
 
-        public x_ken_all[] GetByZipCode(int zipCode)
+        public async Task<x_ken_all[]> GetByZipCode(int zipCode)
         {
             // 郵便番号辞書から検索する
-            var records = x_ken_all_accessor.FetchByNewZipCodeAsync(
-                _hosting.WebRootPath, zipCode).Result;
+            var records = await x_ken_all_accessor.FetchByNewZipCodeAsync(
+                _hosting.WebRootPath, zipCode);
             return records;
         }
     }

@@ -5,13 +5,16 @@
 </head>
 <body>
     <p>Enter zip code:<input id="zipCode" type="text"/>
-        <button onclick="invokeGetByZipCode()">Search...</button></p>
+        <button onclick="invokeWebAPI()">WebAPI...</button>
+        <button onclick="invokeSignalR()">SignalR...</button></p>
     <p>Address results:
         <ol id="resultList" class="list-group" /></p>
     <script src="/lib/jquery/dist/jquery.js"></script>
     <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.0.min.js"></script>
+    <script src="/signalr/hubs"></script>
     <script type="text/javascript">
-        function invokeGetByZipCode() {
+        function invokeWebAPI() {
             // 入力された郵便番号を取得
             var zipCode = $("#zipCode").val();
             // WebAPIの呼び出し
@@ -34,6 +37,35 @@
                             "</li>");
                     });
                 });
+        }
+        function invokeSignalR() {
+            // 入力された郵便番号を取得
+            var zipCode = $("#zipCode").val();
+            // サーバー参照を得る
+            var hub = $.connection.ken_all_hub;
+            $.connection.hub.logging = true;
+            $.connection.hub.start(function () {
+                // SignalR Hubの呼び出し
+                hub.server.getByZipCode(zipCode).
+                    // 応答を受信
+                    done(function (x_ken_alls) {
+                        // resultListの中身を全て削除
+                        var resultList = $("#resultList");
+                        resultList.empty();
+                        // 受信要素を追加
+                        $.each(x_ken_alls, function (index) {
+                            var x_ken_all = x_ken_alls[index];
+                            resultList.append(
+                                "<li class=\"list-group-item\">" +
+                                x_ken_all.NewZipCode +
+                                " - " +
+                                x_ken_all.Prefecture +
+                                x_ken_all.CityWard +
+                                x_ken_all.Address +
+                                "</li>");
+                    });
+                });
+            });
         }
     </script>
 </body>
